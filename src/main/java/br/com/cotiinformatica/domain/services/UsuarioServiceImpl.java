@@ -6,6 +6,7 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.cotiinformatica.domain.contracture.components.JwtTokenComponent;
 import br.com.cotiinformatica.domain.contracture.components.SHA256Component;
 import br.com.cotiinformatica.domain.contracture.service.UsuarioService;
 import br.com.cotiinformatica.domain.models.dtos.AutenticarUsuarioRequestDto;
@@ -23,6 +24,9 @@ public class UsuarioServiceImpl implements UsuarioService {
 	
 	@Autowired 
 	SHA256Component sha256Component;
+	
+	@Autowired 
+	JwtTokenComponent jwtTokenComponent;
 	
 	
 
@@ -62,13 +66,16 @@ public class UsuarioServiceImpl implements UsuarioService {
 		if(usuario == null)
 			throw new IllegalArgumentException("Usuário inválido.");
 		
-	
 		
+		var token = jwtTokenComponent.generateToken(usuario.getId());
+		
+	
 
 		var response = new AutenticarUsuarioResponseDto();
 		response.setId(usuario.getId());
 		response.setNome(usuario.getNome());
 		response.setEmail(usuario.getEmail());
+		response.setToken(token);
 		response.setDataHoraAcesso(new Date());
 		response.setDataHoraExpiracao(new Date(new Date().getTime() + 600000));
 		response.setMensagem("Usuário autenticado com sucesso.");
