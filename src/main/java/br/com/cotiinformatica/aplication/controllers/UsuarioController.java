@@ -14,18 +14,18 @@ import br.com.cotiinformatica.domain.models.dtos.CadastrarUsuarioResponseDto;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping
+@RequestMapping("api/login")
 public class UsuarioController {
 	
 	@Autowired 
 	UsuarioService usuarioService;
 
-	@PostMapping("cadastrar") 
+	@PostMapping("/cadastrar") 
 	public CadastrarUsuarioResponseDto cadastrarUsuario(@RequestBody @Valid CadastrarUsuarioRequestDto dto) {
 		return usuarioService.cadastrarUsuario(dto);
 	}
 
-	@PostMapping("autenticar")
+	@PostMapping("/autenticar")
 	public AutenticarUsuarioResponseDto autenticarUsuario(@RequestBody @Valid AutenticarUsuarioRequestDto dto) {
 		return usuarioService.autenticarUsuario(dto);
 	}

@@ -9,7 +9,7 @@ public class CadastrarUsuarioResponseDto {
 	
 	private UUID id;
 	private String nome;
-	private Integer matricula;
+	private String cargo;
 	private String email;
 	private String mensagem;
 

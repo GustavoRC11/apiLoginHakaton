@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import br.com.cotiinformatica.domain.contracture.components.JwtTokenComponent;
 import br.com.cotiinformatica.domain.contracture.components.SHA256Component;
 import br.com.cotiinformatica.domain.contracture.service.UsuarioService;
+import br.com.cotiinformatica.domain.models.Cargo;
 import br.com.cotiinformatica.domain.models.dtos.AutenticarUsuarioRequestDto;
 import br.com.cotiinformatica.domain.models.dtos.AutenticarUsuarioResponseDto;
 import br.com.cotiinformatica.domain.models.dtos.CadastrarUsuarioRequestDto;
@@ -40,7 +41,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 		var usuario = new Usuario();
 		usuario.setId(UUID.randomUUID());
 		usuario.setNome(dto.getNome());
-		usuario.setMatricula(dto.getMatricula());
+		usuario.setCargo(Cargo.valueOf(dto.getCargo()));
 		usuario.setEmail(dto.getEmail());
 		usuario.setSenha(sha256Component.hash(dto.getSenha()));
 
@@ -51,7 +52,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 		var response = new CadastrarUsuarioResponseDto();
 		response.setId(usuario.getId());
 		response.setNome(usuario.getNome());
-		response.setMatricula(usuario.getMatricula());
+		response.setCargo(usuario.getCargo().toString());
 		response.setEmail(usuario.getEmail());
 		response.setMensagem("Usuário cadastrado com sucesso.");
 

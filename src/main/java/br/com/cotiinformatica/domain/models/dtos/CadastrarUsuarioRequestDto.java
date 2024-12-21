@@ -15,8 +15,8 @@ public class CadastrarUsuarioRequestDto {
 	private String nome;
 	
 	
-	@NotNull(message = "Por favor, informe a matrícula do usuário.")
-	private Integer matricula;
+	@NotNull(message = "Por favor, informe o cargo do usuário.")
+	private String cargo;
 	
 	@Email(message = "Por favor, informe um endereço de email válido.")
 	@NotEmpty(message = "Por favor, informe o email do usuário.")

@@ -2,6 +2,7 @@ package br.com.cotiinformatica.domain.models.entidades;
 
 import java.util.UUID;
 
+import br.com.cotiinformatica.domain.models.Cargo;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -20,8 +21,8 @@ public class Usuario {
 	@Column(name = "nome", length = 150, nullable = false)
 	private String nome;
 	
-	@Column(name = "matricula", length = 50, nullable = false, unique = true)
-	private Integer matricula;
+	@Column(name = "cargo", length = 50, nullable = false)
+	private Cargo cargo;
 	
 	@Column(name = "email", length = 50, nullable = false, unique = true)
 	private String email;
