@@ -12,17 +12,12 @@ services:
       SPRING_DATASOURCE_PASSWORD: coti
     depends_on:
         - mysql
-
   mysql:
     image: mysql:latest
     environment:
       MYSQL_USER: user_coti
-      MYSQL_ROOT_PASSWORD: coti
-      MYSQL_PASSWORD: coti
+      MYSQL_ROOT_PASSWORD: 0505
+      MYSQL_PASSWORD: 0505
       MYSQL_DATABASE: bd_apilogin
     ports:
       - "3306:3306"
-
-networks:
-  default:
-    driver: bridge

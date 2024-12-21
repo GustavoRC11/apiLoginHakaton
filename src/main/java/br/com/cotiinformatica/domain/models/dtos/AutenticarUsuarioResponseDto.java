@@ -10,7 +10,6 @@ public class AutenticarUsuarioResponseDto {
 	
 	private UUID id;
 	private String nome;
-	private Integer matricula;
 	private String email;
 	private String token;
 	private Date dataHoraAcesso;

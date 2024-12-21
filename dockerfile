@@ -22,7 +22,7 @@ COPY --from=builder /app/target/apiLogin-0.0.1-SNAPSHOT.jar app.jar
 # Expor a porta configurada no docker-compose
 EXPOSE 8093
 
-# Definir variáveis de ambiente para conexão com o banco MySQL
+# Definir variáveis de ambiente (opcional, pode ser sobrescrito no docker-compose)
 ENV SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/bd_apilogin
 ENV SPRING_DATASOURCE_USERNAME=user_coti
 ENV SPRING_DATASOURCE_PASSWORD=coti
